@@ -1,2 +1,6 @@
 __pycache__
+pil_cli.egg-info
+build
 .vscode
+*.jpg
+*.png

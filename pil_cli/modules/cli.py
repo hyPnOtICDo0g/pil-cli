@@ -1,9 +1,10 @@
 from sys import argv
-from variables import var
+from .variables import var
 from argparse import ArgumentParser
 
 class cmd:
     def validateArgs(self, args):
+        # check if --infile and --outfile are provided but there are no operational flags
         if(
             (args.infile or args.outfile)
             and not (args.convert
@@ -31,10 +32,11 @@ class cmd:
         imgopr.add_argument('-s', '--scale', help='Scale an image to a given resolution.', metavar='RESOLUTION')
         imgopr.add_argument('-f', '--filter', help=f'Filter an image. {var.imageFilters}', choices=var.imageFilters, metavar='FILTER')
         imgopr.add_argument('-r', '--rotate', help='Rotate an image based on a given degree.', type=int,  metavar='DEGREE')
-        # imgopr.add_argument('-b', '--base64', help='Create an encoded base64 URL from an image.', metavar='')
-        # return parsed arguments
+        # imgopr.add_argument('-b', '--base64', help='Create an encoded base64 URL from an image.')
         args = parser.parse_args()
+        # validate parsed arguments
         self.validateArgs(args)
+        # return parsed arguments
         return args
 
 args = cmd().parseArgs()

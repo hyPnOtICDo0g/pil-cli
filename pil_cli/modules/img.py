@@ -1,5 +1,5 @@
 from sys import argv
-from cli import args
+from .cli import args
 from PIL import Image, ImageFilter
 
 class image:
@@ -14,6 +14,7 @@ class image:
         )
 
     def convert(self):
+        # handle `GRAY` separately as it is invoked using `L` as a parameter
         if args.convert == 'GRAY':
             self.imageObj = self.imageObj.convert('L')
         else:
@@ -21,6 +22,7 @@ class image:
 
     def scale(self):
         try:
+            # str -> tuple with two integer values
             size = tuple(map(int, args.scale.split('x', 1)))
             if len(size) > 2: raise ValueError
         except ValueError:
@@ -32,7 +34,7 @@ class image:
             self.imageObj = self.imageObj.resize(size, Image.ANTIALIAS)
 
     def filter(self):
-        self.imageObj.filter(getattr(ImageFilter, args.filter))
+        self.imageObj = self.imageObj.filter(getattr(ImageFilter, args.filter))
 
     def rotate(self):
         self.imageObj = self.imageObj.rotate(args.rotate, expand=True)
