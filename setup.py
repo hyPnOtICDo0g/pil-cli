@@ -7,7 +7,7 @@ except ImportError:
 if __name__ == '__main__':
     setup(
         name = 'pil-cli',
-        version = '1.0',
+        version = '1.0.1',
         description = 'Basic Image Manipulation using Pillow.',
         keywords = 'cli tool image-processing pillow',
         python_requires = '>=3.8',
@@ -23,7 +23,7 @@ if __name__ == '__main__':
         ],
         entry_points = {
             'console_scripts': [
-                'pil-cli = pil_cli.run:entryPoint',
+                'pil-cli = pil_cli.run:main',
             ]
         },
         classifiers = [

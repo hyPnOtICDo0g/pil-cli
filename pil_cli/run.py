@@ -24,15 +24,13 @@ class pil_cli:
 
             # iterate the argument dict and call the required function
             for key, value in alive_it(self.argsDict.items()):
-                if self.argsDict[key] is None:
-                    continue
-                else:
+                if self.argsDict[key] is not None:
                     getattr(img, key)()
                     completeList.append(key)
 
             img.imageObj.save(out)
         except Exception as e:
-            print(f'{argv[0]}: error:', e)
+            print(f'{var.prog}: error:', e)
         else:
             print('ok: ' + ', '.join(completeList))
 

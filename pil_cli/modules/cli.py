@@ -1,4 +1,3 @@
-from sys import argv
 from .variables import var
 from argparse import ArgumentParser
 
@@ -13,7 +12,7 @@ class cmd:
                     or args.rotate
                     or args.crop)
         ):
-            print(f'{argv[0]}: error: requires at least 1 image operation argument but 0 were provided')
+            print(f'{var.prog}: error: requires at least 1 image operation argument but 0 were provided')
             exit(1)
 
     def parseArgs(self):

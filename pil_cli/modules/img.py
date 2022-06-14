@@ -1,5 +1,5 @@
-from sys import argv
 from .cli import args
+from .variables import var
 from PIL import Image, ImageFilter
 
 class image:
@@ -26,11 +26,11 @@ class image:
             size = tuple(map(int, args.scale.split('x', 1)))
             if len(size) > 2: raise ValueError
         except ValueError:
-            print(f'{argv[0]}: error: invalid resolution (\'{args.scale}\')')
+            print(f'{var.prog}: error: invalid resolution (\'{args.scale}\')')
             exit(1)
         else:
             # a, b = size[0] / size[1], self.imageObj.size[0] / self.imageObj.size[1]
-            # print(f'{argv[0]}: warning: image being upscaled') if a < b else pass
+            # print(f'{var.prog}: warning: image being upscaled') if a < b else pass
             self.imageObj = self.imageObj.resize(size, Image.ANTIALIAS)
 
     def filter(self):
@@ -44,7 +44,7 @@ class image:
             coordinates = tuple(map(int, args.crop.split(',', 4)))
             if len(coordinates) > 4: raise ValueError
         except ValueError:
-            print(f'{argv[0]}: error: invalid coordinates \'{args.crop}\'')
+            print(f'{var.prog}: error: invalid coordinates \'{args.crop}\'')
             exit(1)
         else:
             self.imageObj = self.imageObj.crop(coordinates)
