@@ -24,7 +24,7 @@ class pil_cli:
 
             # iterate the argument dict and call the required function
             for key, value in alive_it(self.argsDict.items()):
-                if self.argsDict[key] is not None:
+                if value is not None:
                     getattr(img, key)()
                     completeList.append(key)
 

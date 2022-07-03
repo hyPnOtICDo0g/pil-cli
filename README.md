@@ -5,8 +5,7 @@ A command-line tool which utilizes the **Python Imaging Library (PIL)** to perfo
 # Usage
 
 ```
-usage: pil-cli [-h] [-V] -i INFILE -o OUTFILE [-c MODE] [-n COORDINATES]
-               [-s RESOLUTION] [-f FILTER] [-r DEGREE]
+usage: pil-cli [-h] [-V] -i INFILE -o OUTFILE [-c MODE] [-n COORDINATES] [-s RESOLUTION] [-f FILTER] [-r DEGREE]
 
 Basic Image Manipulation using Pillow.
 
@@ -22,16 +21,13 @@ required arguments:
 
 image operations:
   -c MODE, --convert MODE
-                        Convert to a different color mode. ['GRAY', 'CMYK',
-                        'RGB']
+                        Convert to a different color mode. ['GRAY', 'CMYK', 'RGB']
   -n COORDINATES, --crop COORDINATES
-                        Crop an image based on given coordinates. (separated
-                        by ',').
+                        Crop an image based on given coordinates. (separated by ',').
   -s RESOLUTION, --scale RESOLUTION
                         Scale an image to a given resolution.
   -f FILTER, --filter FILTER
-                        Filter an image. ['BLUR', 'DETAIL', 'SHARPEN',
-                        'EMBOSS', 'EDGE_ENHANCE']
+                        Filter an image. ['BLUR', 'DETAIL', 'SHARPEN', 'EMBOSS', 'EDGE_ENHANCE']
   -r DEGREE, --rotate DEGREE
                         Rotate an image based on a given degree.
 ```
@@ -63,24 +59,23 @@ pil-cli -i in.jpg -o out.jpg -f BLUR
 pil-cli -i in.jpg -o out.jpg -r 90
 ```
 
-- Use all above options together:
+- Use all above options together (*argument order doesn't matter*):
 ```
-pil-cli -i in.jpg -o out.jpg -s 90x90 -c GRAY -n 0,0,90,90 -f BLUR -r 90
+pil-cli -i in.jpg -o out.jpg -s 100x100 -c GRAY -n 0,0,90,90 -f BLUR -r 90
 ```
-> **Note**: The order of arguments provided make no difference to the final image.  
-> Operations are performed in the following order: **convert, crop, scale, filter, rotate**
-
+> **Note**: Operations are performed in the following order: **convert, crop, scale, filter, rotate**.
 
 # Dependencies
 
 - Python >=3.8
 - [pillow](https://pypi.org/project/Pillow)
-- [alive-progress](https://pypi.org/project/alive-progress/)
+- [alive-progress](https://pypi.org/project/alive-progress)
 - [argparse](https://pypi.org/project/argparse)
 
 # Installation
 
-It is advised to install **git** and use the latest version of *pip* before installation, including the essential packages, *setuptools* and *wheel*.  
+> It is advised to install **git** and use the latest version of *pip* before installation, including the essential packages, *setuptools* and *wheel*.
+
 To ensure these packages are up-to-date, run
 
 ```
